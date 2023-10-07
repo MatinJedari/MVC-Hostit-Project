@@ -1,4 +1,18 @@
-﻿
+﻿@functions{
+    private string ActivityValidator(string controllerName, string actionName)
+    {
+        if (ViewContext.RouteData.Values["Controller"].ToString() == controllerName
+        && ViewContext.RouteData.Values["Action"].ToString() == actionName)
+        {
+            return "active";
+        }
+        else
+        {
+            return "";
+        }
+    }
+}
+
 <!DOCTYPE html>
 <html>
 
@@ -77,8 +91,6 @@
             </div>
         </header>
         <!-- end header section -->
-
-
         <!-- slider section -->
         @{
             if (ViewContext.RouteData.Values["Controller"].ToString() == "Home"
@@ -95,8 +107,6 @@
     <!-- RenderBody Section -->
     @RenderBody()
     <!-- RenderBody Section -->
-
-
     <!-- info section -->
     <section class="info_section layout_padding2">
         <div class="container">
@@ -148,11 +158,11 @@
                             Links
                         </h4>
                         <div class="info_links">
-                            <a class="" asp-controller="Home" asp-action="Index">
+                            <a class=@ActivityValidator("Home", "Index") asp-controller="Home" asp-action="Index">
                                 <img src="~/images/nav-bullet.png" alt="">
                                 Home
                             </a>
-                            <a class="" href="about.html">
+                            <a class=@ActivityValidator("Home", "Index") href="about.html">
                                 <img src="~/images/nav-bullet.png" alt="">
                                 About
                             </a>
@@ -160,7 +170,7 @@
                                 <img src="~/images/nav-bullet.png" alt="">
                                 Services
                             </a>
-                            <a class="active" href="price.html">
+                            <a class=@ActivityValidator("Home", "Pricing") href="price.html">
                                 <img src="~/images/nav-bullet.png" alt="">
                                 Pricing
                             </a>
@@ -196,8 +206,6 @@
         </div>
     </section>
     <!-- end info section -->
-
-
     <!-- footer section -->
     <footer class="footer_section">
         <div class="container">
@@ -208,8 +216,6 @@
         </div>
     </footer>
     <!-- footer section -->
-
-
     <!-- jQery -->
     <script src="~/js/jquery-3.4.1.min.js"></script>
     <!-- bootstrap js -->
