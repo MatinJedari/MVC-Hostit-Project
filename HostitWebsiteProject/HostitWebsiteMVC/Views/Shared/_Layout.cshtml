@@ -53,7 +53,7 @@
         <header class="header_section">
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
                         <span>Hostit</span>
                     </a>
 
@@ -64,13 +64,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav  ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">Home<span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Home" asp-action="Pricing">Pricing</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contact Us</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact Us</a>
                             </li>
                         </ul>
                         <div class="quote_btn-container">
@@ -91,6 +91,7 @@
             </div>
         </header>
         <!-- end header section -->
+
         <!-- slider section -->
         @{
             if (ViewContext.RouteData.Values["Controller"].ToString() == "Home"
@@ -107,6 +108,8 @@
     <!-- RenderBody Section -->
     @RenderBody()
     <!-- RenderBody Section -->
+
+
     <!-- info section -->
     <section class="info_section layout_padding2">
         <div class="container">
@@ -162,19 +165,11 @@
                                 <img src="~/images/nav-bullet.png" alt="">
                                 Home
                             </a>
-                            <a class=@ActivityValidator("Home", "Index") href="about.html">
-                                <img src="~/images/nav-bullet.png" alt="">
-                                About
-                            </a>
-                            <a class="" href="service.html">
-                                <img src="~/images/nav-bullet.png" alt="">
-                                Services
-                            </a>
-                            <a class=@ActivityValidator("Home", "Pricing") href="price.html">
+                            <a class=@ActivityValidator("Home", "Pricing") asp-controller="Home" asp-action="Pricing">
                                 <img src="~/images/nav-bullet.png" alt="">
                                 Pricing
                             </a>
-                            <a class="" href="contact.html">
+                            <a class=@ActivityValidator("Home", "Contact") asp-controller="Home" asp-action="Contact">
                                 <img src="~/images/nav-bullet.png" alt="">
                                 Contact Us
                             </a>
@@ -206,6 +201,8 @@
         </div>
     </section>
     <!-- end info section -->
+
+
     <!-- footer section -->
     <footer class="footer_section">
         <div class="container">
