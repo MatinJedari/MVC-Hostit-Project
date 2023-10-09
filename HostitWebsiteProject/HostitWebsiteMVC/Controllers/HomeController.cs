@@ -14,27 +14,30 @@ namespace HostitWebsiteMVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private readonly List<Price> _ServicePrice = new List<Price>
+        private readonly List<Price> _servicePrice = new List<Price>
         {
             new Price
             {
+                ServiceName = "STARTUP",
                 ServicePrice = "49",
-                RAM = "2 GB",
-                CloudStorage = "20 GB",
+                RAM = "2GB",
+                CloudStorage = "20GB",
                 SecurityServices = "DDoS Protection"
             },
             new Price
             {
+                ServiceName = "STANDARD",
                 ServicePrice = "99",
-                RAM = "4 GB",
-                CloudStorage = "50 GB",
+                RAM = "4GB",
+                CloudStorage = "50GB",
                 SecurityServices = "DDoS Protection"
             },
             new Price
             {
+                ServiceName = "BUSINESS", 
                 ServicePrice = "149",
-                RAM = "8 GB",
-                CloudStorage = "100 GB",
+                RAM = "8GB",
+                CloudStorage = "100GB",
                 SecurityServices = "DDoS Protection"
             }
         };
@@ -50,8 +53,7 @@ namespace HostitWebsiteMVC.Controllers
 
         public IActionResult Pricing()
         {
-            
-            return View();
+            return View(_servicePrice);
         }
 
         public IActionResult Contact()
