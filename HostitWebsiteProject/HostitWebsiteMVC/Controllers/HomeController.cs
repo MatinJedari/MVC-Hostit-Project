@@ -16,30 +16,9 @@ namespace HostitWebsiteMVC.Controllers
 
         private readonly List<Price> _servicePrice = new List<Price>
         {
-            new Price
-            {
-                ServiceName = "STARTUP",
-                ServicePrice = "49",
-                RAM = "2GB",
-                CloudStorage = "20GB",
-                SecurityServices = "DDoS Protection"
-            },
-            new Price
-            {
-                ServiceName = "STANDARD",
-                ServicePrice = "99",
-                RAM = "4GB",
-                CloudStorage = "50GB",
-                SecurityServices = "DDoS Protection"
-            },
-            new Price
-            {
-                ServiceName = "BUSINESS", 
-                ServicePrice = "149",
-                RAM = "8GB",
-                CloudStorage = "100GB",
-                SecurityServices = "DDoS Protection"
-            }
+            new Price("STARTUP", "49", "2GB", "20GB", "DDoS Protection"),
+            new Price("STANDARD", "99", "4GB", "50GB", "DDoS Protection"),
+            new Price("BUSINESS", "149", "8GB", "100GB", "DDoS Protection")
         };
         public HomeController(ILogger<HomeController> logger)
         {
