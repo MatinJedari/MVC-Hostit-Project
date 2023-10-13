@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Home\Components\NewFolder\" />
+    <Compile Remove="Views\Home\Components\NewFolder\**" />
+    <Content Remove="Views\Home\Components\NewFolder\**" />
+    <EmbeddedResource Remove="Views\Home\Components\NewFolder\**" />
+    <None Remove="Views\Home\Components\NewFolder\**" />
   </ItemGroup>
 
 </Project>
