@@ -1,7 +1,10 @@
 ﻿using HostitWebsiteMVC.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -35,10 +38,32 @@ namespace HostitWebsiteMVC.Controllers
             return View(_servicePrice);
         }
 
+        [HttpGet]
         public IActionResult Contact()
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Contact(ContactMessage form)
+        {
+            string jsonFilePath = "C:/Users/matin/source/repos/My-MVC-Portfolios/HostitWebsiteProject/HostitWebsiteMVC/wwwroot/contactMessages.json";
+            List<ContactMessage> contactMessages = new List<ContactMessage>();
+            if (System.IO.File.Exists(jsonFilePath))
+            {
+                string json = System.IO.File.ReadAllText(jsonFilePath);
+                contactMessages = JsonConvert.DeserializeObject<List<ContactMessage>>(json);
+            }
+
+            contactMessages.Add(form);
+
+            string updatedJson = JsonConvert.SerializeObject(contactMessages);
+            System.IO.File.WriteAllText(jsonFilePath, updatedJson);
+
+            return View();
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
