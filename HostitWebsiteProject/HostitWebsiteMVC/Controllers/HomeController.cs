@@ -41,7 +41,8 @@ namespace HostitWebsiteMVC.Controllers
         [HttpGet]
         public IActionResult Contact()
         {
-            return View();
+            var model = new ContactMessage();
+            return View(model);
         }
 
         [HttpPost]

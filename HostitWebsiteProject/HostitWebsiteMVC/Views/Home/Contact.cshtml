@@ -1,4 +1,5 @@
-﻿
+﻿@model ContactMessage
+
 <section class="contact_section layout_padding">
     <div class="container">
         <div class="heading_container heading_center">
@@ -11,16 +12,22 @@
                 <div class="form_container">
                     <form method="post" asp-action="Contact">
                         <div>
-                            <input type="text" placeholder="Your Name" name="Name"/>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                            <input type="text" placeholder="Your Name(Required)" asp-for="Name"/>
+                            
                         </div>
                         <div>
-                            <input type="email" placeholder="Your Email" name="Email"/>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                            <input type="email" placeholder="Your Email(Required)" asp-for="Email" />
+                            
                         </div>
                         <div>
-                            <input type="text" placeholder="Your Phone" name="Phone"/>
+                            <input type="text" placeholder="Your Phone" asp-for="Phone"/> 
                         </div>
                         <div>
-                            <input type="text" class="message-box" placeholder="Message" name="Message"/>
+                            <span asp-validation-for="Message" class="text-danger"></span>
+                            <input type="text" class="message-box" placeholder="Message(Required)" asp-for="Message" />
+                            
                         </div>
                         <div class="btn_box ">
                             <button>
