@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 
 namespace HostitWebsiteMVC.Controllers
 {
@@ -48,7 +49,13 @@ namespace HostitWebsiteMVC.Controllers
         [HttpPost]
         public ActionResult Contact(ContactMessage form)
         {
-            string jsonFilePath = "C:/Users/matin/source/repos/My-MVC-Portfolios/HostitWebsiteProject/HostitWebsiteMVC/wwwroot/contactMessages.json";
+            if (!ModelState.IsValid)
+            {
+                ViewBag.error = "My apologies, an issue has occurred. Please try again.";
+                return View(form);
+            }
+
+            string jsonFilePath = Directory.GetCurrentDirectory() + "/DataRepository/ContactMessageData.json";
             List<ContactMessage> contactMessages = new List<ContactMessage>();
             if (System.IO.File.Exists(jsonFilePath))
             {
@@ -61,7 +68,9 @@ namespace HostitWebsiteMVC.Controllers
             string updatedJson = JsonConvert.SerializeObject(contactMessages);
             System.IO.File.WriteAllText(jsonFilePath, updatedJson);
 
+            ViewBag.success = "Your message has been successfully sent. We appreciate your kind attention.";
             return View();
+
         }
 
 

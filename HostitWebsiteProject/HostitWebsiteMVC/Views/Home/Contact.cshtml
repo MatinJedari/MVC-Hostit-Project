@@ -7,6 +7,21 @@
                 Get In Touch
             </h2>
         </div>
+
+        @if (!string.IsNullOrWhiteSpace(ViewBag.success))
+        {
+            <div class="alert alert-dismissible alert-success">             
+                <strong>Well done!</strong> @ViewBag.success
+            </div>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(ViewBag.error))
+        {
+            <div class="alert alert-dismissible alert-danger">
+                <strong>Oh snap!</strong> @ViewBag.error
+            </div>
+        }
+
         <div class="row">
             <div class="col-md-8 col-lg-6 mx-auto">
                 <div class="form_container">

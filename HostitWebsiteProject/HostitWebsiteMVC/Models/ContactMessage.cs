@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace HostitWebsiteMVC.Models
 {
@@ -7,6 +8,7 @@ namespace HostitWebsiteMVC.Models
         [Required(ErrorMessage = "Entering the name is mandatory")]
         [MinLength(2, ErrorMessage = "The minimum length of the name must be 2 characters.")]
         [MaxLength(100, ErrorMessage = "The maximum length of the name must be 100 characters")]
+        // [JsonProperty("Name")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Entering the email is mandatory")]
