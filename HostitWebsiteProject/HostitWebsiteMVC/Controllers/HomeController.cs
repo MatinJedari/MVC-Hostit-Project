@@ -11,6 +11,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HostitWebsiteMVC.Controllers
 {
@@ -20,9 +21,9 @@ namespace HostitWebsiteMVC.Controllers
 
         private readonly List<Price> _servicePrice = new List<Price>
         {
-            new Price("STARTUP", "49", "2GB", "20GB", "DDoS Protection"),
-            new Price("STANDARD", "99", "4GB", "50GB", "DDoS Protection"),
-            new Price("BUSINESS", "149", "8GB", "100GB", "DDoS Protection")
+            new Price(1, "STARTUP", "49", "2GB", "20GB", "DDoS Protection"),
+            new Price(2, "STANDARD", "99", "4GB", "50GB", "DDoS Protection"),
+            new Price(3, "BUSINESS", "149", "8GB", "100GB", "DDoS Protection")
         };
         public HomeController(ILogger<HomeController> logger)
         {
@@ -42,7 +43,10 @@ namespace HostitWebsiteMVC.Controllers
         [HttpGet]
         public IActionResult Contact()
         {
-            var model = new ContactMessage();
+            var model = new ContactMessage
+            {
+                ServicePrice = new SelectList(_servicePrice, "Id", "ServiceName")
+            };
             return View(model);
         }
 
