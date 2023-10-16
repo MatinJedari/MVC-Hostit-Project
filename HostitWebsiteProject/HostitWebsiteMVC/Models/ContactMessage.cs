@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using HostitWebsiteMVC.Validations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
@@ -22,6 +23,8 @@ namespace HostitWebsiteMVC.Models
         [Required(ErrorMessage = "Message content is required.")]
         [StringLength(800, MinimumLength = 10, ErrorMessage = "Message must be between 10 and 800 characters.")]
         public string Message { get; set; }
+
+        public int Service { get; set; }
 
         public SelectList ServicePrice { get; set; }
     }

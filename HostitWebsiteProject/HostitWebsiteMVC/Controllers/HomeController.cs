@@ -53,12 +53,15 @@ namespace HostitWebsiteMVC.Controllers
         [HttpPost]
         public ActionResult Contact(ContactMessage form)
         {
+            form.ServicePrice = new SelectList(_servicePrice, "Id", "ServiceName");
+
             if (!ModelState.IsValid)
             {
                 ViewBag.error = "My apologies, an issue has occurred. Please try again.";
                 return View(form);
             }
 
+            
             string jsonFilePath = Directory.GetCurrentDirectory() + "/DataRepository/ContactMessageData.json";
             List<ContactMessage> contactMessages = new List<ContactMessage>();
             if (System.IO.File.Exists(jsonFilePath))
@@ -73,7 +76,15 @@ namespace HostitWebsiteMVC.Controllers
             System.IO.File.WriteAllText(jsonFilePath, updatedJson);
 
             ViewBag.success = "Your message has been successfully sent. We appreciate your kind attention.";
-            return View();
+
+            ModelState.Clear();
+
+            form = new ContactMessage
+            {
+                ServicePrice = new SelectList(_servicePrice, "Id", "ServiceName")
+            };
+
+            return View(form);
 
         }
 
