@@ -1,2 +1,2 @@
 # My-MVC-Portfolios
-This repository contains my MVC portfolios
+This project is a simple website for selling products of a hosting company. The website includes sections such as the homepage, user comments, offered services, and their features. It also features a contact form for users to communicate with the site administrators, and the input data in this form is validated on the server side. The correct information entered is stored in a JSON file.
