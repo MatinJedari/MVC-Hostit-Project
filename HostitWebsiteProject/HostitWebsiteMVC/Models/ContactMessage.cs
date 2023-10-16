@@ -10,7 +10,6 @@ namespace HostitWebsiteMVC.Models
         [Required(ErrorMessage = "Entering the name is mandatory")]
         [MinLength(2, ErrorMessage = "The minimum length of the name must be 2 characters.")]
         [MaxLength(100, ErrorMessage = "The maximum length of the name must be 100 characters")]
-        // [JsonProperty("Name")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Entering the email is mandatory")]
@@ -27,6 +26,7 @@ namespace HostitWebsiteMVC.Models
         [EnsureOptionIsSelected(ErrorMessage = "Select your purchased service")]
         public int Service { get; set; }
 
+        // This property is used to create a dropdown menu in the Contact Us form.
         public SelectList ServicePrice { get; set; }
     }
 }

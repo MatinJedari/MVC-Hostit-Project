@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HostitWebsiteMVC.Validations
 {
+    // This validator is defined to check the selection of a service by users.
+
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
     public class EnsureOptionIsSelectedAttribute : ValidationAttribute
     {
